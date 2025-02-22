@@ -26,6 +26,10 @@ const FormSchema = new mongoose.Schema({
 
 const Form = mongoose.model("Form", FormSchema);
 
+app.get("/", (req,res)=>{
+  res.send("Hello world");
+})
+
 // API Route to Handle Form Submission
 app.post("/submit", async (req, res) => {
   try {
