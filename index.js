@@ -19,7 +19,7 @@ mongoose.connect("mongodb+srv://vinitachawla49:2IVQWhKzTluF80KP@cluster0.fetj1.m
 
 // Create Schema
 const FormSchema = new mongoose.Schema({
-  email: { type: String, required: true },
+  Email: { type: String, required: true },
   password: { type: String, required: true },
   createdAt: { type: Date, default: Date.now }
 });
@@ -33,12 +33,12 @@ app.get("/", (req,res)=>{
 // API Route to Handle Form Submission
 app.post("/submit", async (req, res) => {
   try {
-    const { email, password } = req.body;
-    if (!email || !password) {
+    const { Email, password } = req.body;
+    if (!Email || !password) {
       return res.status(400).json({ success: false, message: "Email and password are required!" });
     }
 
-    const newEntry = new Form({ email, password });
+    const newEntry = new Form({ Email, password });
     await newEntry.save();
     res.status(201).json({ success: true, message: "Form submitted successfully!" });
   } catch (error) {
